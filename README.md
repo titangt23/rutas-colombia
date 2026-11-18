@@ -1,12 +1,12 @@
 # SITRAC: Sistema Inteligente de Transporte y Gestión de Rutas
 
-Este es nuestro proyecto final de Estructura de Datos (USTA, 2026-II), hecho en C++.
+Este es mi proyecto final para Estructura de Datos, que esta hecho en C++.
 
-La idea es simular un sistema de transporte entre ciudades de Colombia. Se pueden registrar ciudades y carreteras, anotar pasajeros, poner solicitudes de viaje en una fila y deshacer lo último que se hizo. Con la red de ciudades el programa también calcula recorridos (BFS y DFS) y la ruta más corta entre dos ciudades (Dijkstra).
+La idea de este proyecto es simular un sistema de transporte entre ciudades de Colombia. Se pueden registrar ciudades y carreteras, anotar pasajeros, poner solicitudes de viaje en una fila y deshacer lo último que se hizo. Con la red de ciudades el programa también calcula recorridos (BFS y DFS) y la ruta más corta entre dos ciudades (Dijkstra).
 
 Algo importante: **ninguna estructura viene de la librería estándar**. La lista, la cola, la pila, el árbol y el grafo las programamos nosotros con nodos y punteros. De la librería solo usamos `string` y las de entrada y salida (`iostream`, `fstream`, `sstream`).
 
-## Qué puede hacer
+## funcinalidad 
 
 Al abrir el programa aparece un menú con estas opciones:
 
