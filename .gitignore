@@ -1,0 +1,19 @@
+# Ejecutables y archivos compilados (se generan al compilar)
+*.exe
+*.o
+*.obj
+*.out
+sitrac
+pruebas
+
+# Archivos temporales de las pruebas
+prueba_tmp.txt
+corrupto_tmp.txt
+
+# Configuracion de VS Code de este computador (tiene rutas propias)
+.vscode/
+
+# Archivos del sistema
+Thumbs.db
+desktop.ini
+.DS_Store

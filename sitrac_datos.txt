@@ -1,0 +1,29 @@
+# Datos de ejemplo de SITRAC (se cargan con la opcion 9 -> 2)
+CIUDAD;Bogota
+CIUDAD;Tunja
+CIUDAD;Bucaramanga
+CIUDAD;Villavicencio
+CIUDAD;Ibague
+CIUDAD;Armenia
+CIUDAD;Pereira
+CIUDAD;Manizales
+CIUDAD;Medellin
+CIUDAD;Cali
+CIUDAD;Leticia
+CONEXION;Bogota;Tunja;140
+CONEXION;Bogota;Villavicencio;120
+CONEXION;Bogota;Ibague;195
+CONEXION;Bogota;Manizales;290
+CONEXION;Tunja;Bucaramanga;280
+CONEXION;Ibague;Armenia;90
+CONEXION;Armenia;Pereira;50
+CONEXION;Armenia;Cali;180
+CONEXION;Pereira;Manizales;55
+CONEXION;Pereira;Cali;215
+CONEXION;Manizales;Medellin;200
+CONEXION;Bucaramanga;Medellin;390
+PASAJERO;1;Ana Perez;20
+PASAJERO;2;Luis Gomez;35
+PASAJERO;3;Sara Diaz;28
+SOLICITUD;1;Bogota;Cali
+SOLICITUD;2;Tunja;Medellin
