@@ -1,51 +1,55 @@
-# 🚌 SITRAC – Sistema Inteligente de Transporte y Gestión de Rutas
+# SITRAC: Sistema Inteligente de Transporte y Gestión de Rutas
 
-Proyecto integrador final de **Estructura de Datos** (USTA · 2026-II), hecho en **C++**.
+Este es nuestro proyecto final de Estructura de Datos (USTA, 2026-II), hecho en C++.
 
-SITRAC administra una red de ciudades unidas por carreteras, los pasajeros, las solicitudes de viaje y el historial de acciones. Con esa red calcula recorridos (**BFS**, **DFS**) y la ruta más corta (**Dijkstra**).
+La idea es simular un sistema de transporte entre ciudades de Colombia. Se pueden registrar ciudades y carreteras, anotar pasajeros, poner solicitudes de viaje en una fila y deshacer lo último que se hizo. Con la red de ciudades el programa también calcula recorridos (BFS y DFS) y la ruta más corta entre dos ciudades (Dijkstra).
 
-Todas las estructuras de datos están **implementadas desde cero** con nodos y punteros: lista enlazada, cola, pila, árbol binario de búsqueda y grafo. De la biblioteca estándar solo se usan `string`, `iostream`, `fstream` y `sstream`.
+Algo importante: **ninguna estructura viene de la librería estándar**. La lista, la cola, la pila, el árbol y el grafo las programamos nosotros con nodos y punteros. De la librería solo usamos `string` y las de entrada y salida (`iostream`, `fstream`, `sstream`).
 
----
+## Qué puede hacer
 
-## ✨ Funcionalidades
+Al abrir el programa aparece un menú con estas opciones:
 
-| Menú | Módulo | Estructura de datos |
+| Opción | Qué hace | Estructura que usa |
 |---|---|---|
-| 1 | Gestión de ciudades (agregar, listar, buscar, eliminar) | Grafo |
-| 2 | Gestión de conexiones con distancia en km | Grafo ponderado |
-| 3 | Gestión de pasajeros (CRUD) | Lista simplemente enlazada |
-| 4 | Cola de solicitudes de viaje (encolar, atender) | Cola FIFO |
-| 5 | Historial de acciones con **deshacer** | Pila LIFO |
-| 6 | Árbol de ciudades buscadas (insertar, buscar, eliminar, recorridos) | ABB |
-| 7 | Rutas: BFS, DFS y Dijkstra con reconstrucción del camino | Grafo + Cola + Pila |
-| 8 | Reportes y tabla de complejidad Big O | — |
-| 9 | Guardar / cargar en archivo de texto | — |
+| 1 | Agregar, listar, buscar y eliminar ciudades | Grafo |
+| 2 | Agregar y eliminar carreteras con su distancia en km | Grafo ponderado |
+| 3 | Registrar, buscar, modificar y eliminar pasajeros | Lista enlazada |
+| 4 | Poner solicitudes de viaje y atenderlas en orden de llegada | Cola |
+| 5 | Ver el historial y deshacer la última acción | Pila |
+| 6 | Guardar las ciudades que se han buscado, con cuántas veces | Árbol binario de búsqueda |
+| 7 | Recorridos BFS y DFS, y ruta más corta con Dijkstra | Grafo, cola y pila |
+| 8 | Reportes y la tabla de complejidad Big O | |
+| 9 | Guardar y cargar los datos en un archivo de texto | |
+| 0 | Salir | |
 
----
+Cada submenú tiene su opción "0. Volver".
 
-## ⚙️ Compilar y ejecutar
+## Cómo compilarlo y ejecutarlo
 
-Se necesita `g++` con C++11 o una versión más nueva (MinGW / WinLibs en Windows).
+Solo se necesita un compilador de C++ como `g++` (en Windows sirve MinGW o WinLibs), con C++11 o más reciente.
 
 ```bash
 g++ -std=c++11 main.cpp -o sitrac
-./sitrac            # en Windows: sitrac.exe
+./sitrac
 ```
 
-Pruebas automáticas:
+En Windows el ejecutable se llama `sitrac.exe`.
+
+Las pruebas automáticas se compilan igual:
 
 ```bash
 g++ -std=c++11 pruebas.cpp -o pruebas
-./pruebas           # en Windows: pruebas.exe
+./pruebas
 ```
 
-**Datos de ejemplo:** dentro del programa, entrar a **9 → 2** y presionar Enter. Se carga `sitrac_datos.txt`, con 11 ciudades de Colombia y 12 carreteras.
+Para no tener que escribir ciudades a mano, dentro del programa entren a la opción **9**, luego a **2**, y presionen Enter. Eso carga `sitrac_datos.txt`, que trae 11 ciudades de Colombia y 12 carreteras entre ellas.
 
-> **Visual Studio Code:** abrir la carpeta del proyecto y presionar **Ctrl+Shift+B** para compilar y ejecutar. Para depurar se necesita la extensión **C/C++** de Microsoft.
-> **Dev-C++ / Code::Blocks:** si sale un error con `nullptr` o `to_string`, agregar `-std=c++11` en las opciones del compilador.
+Si usan Visual Studio Code, abran la carpeta del proyecto y presionen Ctrl+Shift+B para compilar y ejecutar. Si usan Dev-C++ o Code::Blocks y les sale un error con `nullptr` o `to_string`, hay que agregar `-std=c++11` en las opciones del compilador.
 
-### Ejemplo de uso
+### Un ejemplo
+
+Con los datos de ejemplo cargados, así se ve pedir la ruta más corta de Bogota a Cali:
 
 ```
 7. Rutas y algoritmos -> 3. Dijkstra
@@ -53,117 +57,117 @@ Ciudad origen: Bogota
 Ciudad destino: Cali
   Ruta mas corta: Bogota -> Ibague -> Armenia -> Cali
   Distancia total: 465 km
-
-7. Rutas y algoritmos -> 1. BFS
-Ciudad de inicio: Bogota
-  Bogota[0] -> Tunja[1] -> Villavicencio[1] -> Ibague[1] -> Manizales[1] ->
-  Bucaramanga[2] -> Armenia[2] -> Pereira[2] -> Medellin[2] -> Cali[3]
 ```
 
----
-
-## 📁 Estructura del proyecto
+Y el recorrido BFS desde Bogota, que muestra entre corchetes a cuántos saltos queda cada ciudad:
 
 ```
-SITRAC/
-├── main.cpp            # Menú principal y submenús (solo llama a los módulos)
-├── Utilidades.h        # Lectura segura del teclado (números y textos)
-├── ListaPasajeros.h    # Lista simplemente enlazada (CRUD de pasajeros)
-├── Cola.h              # Cola FIFO genérica con nodos  -> Cola<T>
-├── Pila.h              # Pila LIFO genérica con nodos  -> Pila<T>
-├── ABB.h               # Árbol binario de búsqueda
-├── Grafo.h             # Grafo ponderado no dirigido + BFS, DFS, Dijkstra
-├── Tipos.h             # Structs Solicitud y Accion
-├── Persistencia.h      # Guardar y cargar el archivo de datos
-├── pruebas.cpp         # 25 pruebas automáticas
-├── sitrac_datos.txt    # Datos de ejemplo
-└── GUIA_PARA_EXPLICAR.md  # Guía para la sustentación
+Bogota[0] -> Tunja[1] -> Villavicencio[1] -> Ibague[1] -> Manizales[1] ->
+Bucaramanga[2] -> Armenia[2] -> Pereira[2] -> Medellin[2] -> Cali[3]
 ```
 
----
+Leticia está en los datos sin ninguna carretera a propósito, para poder probar qué pasa cuando no existe un camino.
 
-## 🧠 Diseño
+## Qué hay en cada archivo
 
-- **Lista enlazada (pasajeros):** `cabeza → [id|nombre|edad|sig] → … → nullptr`. Se inserta al final y no se aceptan IDs repetidos. Al eliminar se hace `anterior->siguiente = actual->siguiente` y luego `delete`.
-- **Cola (solicitudes):** guarda punteros a `frente` y a `final`, así que encolar y desencolar son O(1). Si está vacía, `desencolar` devuelve `false` sin tocar la memoria. El BFS también la usa.
-- **Pila (historial):** todo se hace en el `tope`. Cada acción guarda los datos necesarios para deshacerla. Dijkstra también usa una pila para poner el camino en orden.
-- **ABB (búsquedas):** la clave es el nombre de la ciudad (orden alfabético) y cada nodo cuenta las veces que se buscó. La eliminación cubre los 3 casos: hoja, un hijo y dos hijos (con sucesor inorden).
-- **Grafo:** las ciudades forman una lista enlazada y cada una tiene su lista de adyacencia `(destino, km)`. Como es **no dirigido**, cada conexión se guarda en las dos ciudades.
+Separamos el código por estructura para que cada archivo se pueda leer y explicar por separado.
 
-### Integridad y manejo de errores
-- Ciudad duplicada → se rechaza sin alterar el grafo.
-- Distancia ≤ 0, conexión de una ciudad consigo misma, conexión repetida o con una ciudad inexistente → se rechaza.
-- Eliminar una ciudad → también borra **todas** sus conexiones en los vecinos, para que no queden punteros colgando.
-- Letras en un campo numérico → el programa avisa y vuelve a preguntar. Nunca se cierra.
-- Archivo faltante → los datos actuales no se tocan. Las líneas corruptas se ignoran con un aviso.
+| Archivo | Qué contiene |
+|---|---|
+| `main.cpp` | El menú principal y los submenús. Solo llama a las demás estructuras. |
+| `Utilidades.h` | Funciones para leer del teclado sin que el programa se caiga si escriben algo incorrecto. |
+| `ListaPasajeros.h` | La lista enlazada con el CRUD de pasajeros. |
+| `Cola.h` | La cola (primero en entrar, primero en salir). Es una plantilla, así que sirve para varios tipos de dato. |
+| `Pila.h` | La pila (último en entrar, primero en salir). También es una plantilla. |
+| `ABB.h` | El árbol binario de búsqueda. |
+| `Grafo.h` | El grafo con BFS, DFS y Dijkstra. |
+| `Tipos.h` | Los dos `struct` que se guardan en la cola y en la pila: `Solicitud` y `Accion`. |
+| `Persistencia.h` | Guardar y cargar el archivo de datos. |
+| `pruebas.cpp` | Las 25 pruebas automáticas. |
+| `sitrac_datos.txt` | Los datos de ejemplo. |
+| `GUIA_PARA_EXPLICAR.md` | Nuestras notas para la sustentación. |
 
-### Deshacer (pila)
-Se puede deshacer: agregar ciudad, agregar o eliminar conexión, y registrar, modificar o eliminar pasajero.
-Eliminar ciudad, encolar y atender solicitudes quedan en el historial, pero no se pueden deshacer.
+## Cómo está hecho
 
----
+**Lista enlazada de pasajeros.** Cada pasajero es un nodo que apunta al siguiente. Se agrega al final y no deja repetir el ID. Para eliminar, el nodo anterior se salta al que se borra (`anterior->siguiente = actual->siguiente`) y después se libera la memoria con `delete`.
 
-## 📊 Complejidad (Big O)
+**Cola de solicitudes.** Guarda un puntero al frente y otro al final, por eso encolar y desencolar no tienen que recorrer nada. Si alguien intenta atender con la cola vacía, el programa avisa y no toca memoria que no existe. El BFS usa esta misma cola.
 
-V = ciudades · E = conexiones · n = elementos · h = altura del ABB
+**Pila de historial.** Todo ocurre en la cima. Cada acción guarda los datos necesarios para poder revertirla, por ejemplo, al eliminar un pasajero se guarda su ID, nombre y edad para volver a insertarlo. Dijkstra también usa una pila, para mostrar el camino en el orden correcto.
+
+**Árbol binario de búsqueda.** Ordena las ciudades alfabéticamente y cada nodo cuenta cuántas veces se buscó esa ciudad. Al eliminar se manejan los tres casos: nodo sin hijos, con un hijo y con dos hijos (en ese caso se reemplaza por el sucesor inorden). Tiene los tres recorridos: inorden, preorden y postorden.
+
+**Grafo.** Las ciudades están en una lista y cada ciudad tiene su propia lista de carreteras con el destino y los kilómetros. Como las carreteras van en los dos sentidos, cada una se guarda dos veces, una en cada ciudad.
+
+### Qué pasa cuando algo sale mal
+
+Una parte importante del proyecto era que ninguna operación fallida dañara los datos:
+
+- Si se agrega una ciudad repetida, se rechaza y el grafo queda igual.
+- Si la distancia es cero o negativa, la carretera conecta una ciudad consigo misma, ya existe, o alguna de las dos ciudades no existe, se rechaza.
+- Al eliminar una ciudad también se borran todas sus carreteras, incluidas las que sus vecinas tenían hacia ella. Si no, quedarían punteros apuntando a memoria ya liberada.
+- Si escriben letras donde se pide un número, el programa avisa y vuelve a preguntar. No se cierra.
+- Si el archivo de datos no existe, los datos que ya estaban cargados no se pierden. Si trae líneas dañadas, esas líneas se saltan con un aviso y el resto sí se carga.
+
+### Qué se puede deshacer
+
+Se puede deshacer agregar una ciudad, agregar o eliminar una carretera, y registrar, modificar o eliminar un pasajero. Eliminar una ciudad, encolar y atender solicitudes sí quedan en el historial, pero no se pueden deshacer.
+
+## Complejidad (Big O)
+
+V es el número de ciudades, E el de carreteras, n la cantidad de elementos y h la altura del árbol.
 
 | Operación | Complejidad | Por qué |
 |---|---|---|
-| Lista: insertar / buscar / eliminar | O(n) | se recorre nodo por nodo |
-| Cola: encolar / desencolar | O(1) | punteros `frente` y `final` |
-| Pila: apilar / desapilar | O(1) | todo ocurre en el `tope` |
-| ABB: insertar / buscar / eliminar | O(h) | O(log n) balanceado, O(n) peor caso |
-| ABB: recorridos | O(n) | cada nodo se visita una vez |
-| Grafo: agregar / buscar ciudad | O(V) | se recorre la lista de ciudades |
-| Grafo: eliminar ciudad | O(V + E) | se borran sus aristas en los vecinos |
-| BFS / DFS | O(V + E) | cada vértice y arista una vez |
-| Dijkstra | O(V²) | selección lineal del mínimo (sin montículo) |
+| Lista: insertar, buscar, eliminar | O(n) | hay que recorrerla nodo por nodo |
+| Cola: encolar, desencolar | O(1) | se usan los punteros al frente y al final |
+| Pila: apilar, desapilar | O(1) | siempre se trabaja en la cima |
+| Árbol: insertar, buscar, eliminar | O(h) | O(log n) si está equilibrado, O(n) en el peor caso |
+| Árbol: recorridos | O(n) | cada nodo se visita una vez |
+| Grafo: agregar o buscar ciudad | O(V) | se recorre la lista de ciudades |
+| Grafo: eliminar ciudad | O(V + E) | hay que borrar sus carreteras en las ciudades vecinas |
+| BFS y DFS | O(V + E) | cada ciudad y cada carretera se revisan una sola vez |
+| Dijkstra | O(V²) | en cada paso se busca el mínimo recorriendo todas las ciudades, sin usar montículo |
 
----
+## Pruebas
 
-## ✅ Pruebas
-
-`pruebas.cpp` tiene **25 pruebas automáticas**. Incluyen todas las pruebas adversariales que pide el proyecto.
+`pruebas.cpp` tiene 25 pruebas automáticas, entre ellas todos los casos difíciles que pide la presentación del proyecto. Al ejecutarlo debe terminar así:
 
 ```
 Resultado: 25 pruebas OK, 0 fallaron.
 ```
 
-| # | Prueba |
+| Pruebas | Qué revisan |
 |---|---|
-| 01 | Ciudad duplicada se rechaza sin alterar el grafo |
-| 02-03 | Distancia negativa o cero se rechaza |
-| 04-05 | Conexión con ciudad inexistente o repetida se rechaza |
-| 06-07 | Eliminar ciudad borra sus conexiones · eliminar una inexistente no cambia nada |
-| 08-09 | Orden de visita de BFS (con niveles) y DFS |
-| 10-11 | Dijkstra: distancia y camino · sin camino · ciudad inexistente |
-| 12-15 | Lista: ID repetido, eliminar inexistente, eliminar inicio/medio/final, modificar |
-| 16-17 | Cola vacía y orden FIFO |
-| 18 | Pila LIFO y pila vacía |
-| 19-21 | ABB: insertar, buscar, eliminar (3 casos) y recorridos |
-| 22 | Entrada alfabética en campo numérico |
-| 23-25 | Archivo faltante · guardar → cargar sin pérdida · archivo corrupto |
+| 01 | Una ciudad duplicada se rechaza sin alterar el grafo |
+| 02 y 03 | Una distancia negativa o cero se rechaza |
+| 04 y 05 | Una carretera con una ciudad que no existe, o repetida, se rechaza |
+| 06 y 07 | Eliminar una ciudad borra sus carreteras; eliminar una que no existe no cambia nada |
+| 08 y 09 | El orden de visita de BFS (con niveles) y de DFS |
+| 10 y 11 | Dijkstra: distancia y camino, caso sin camino y ciudad inexistente |
+| 12 a 15 | Lista: ID repetido, eliminar uno que no existe, eliminar al inicio, en medio y al final, y modificar |
+| 16 y 17 | Cola vacía y orden de llegada |
+| 18 | Pila y pila vacía |
+| 19 a 21 | Árbol: insertar, buscar, eliminar en sus tres casos y los recorridos |
+| 22 | Texto en un campo que pide un número |
+| 23 a 25 | Archivo que no existe, guardar y volver a cargar sin perder nada, y archivo con líneas dañadas |
 
-**Prueba manual:** con los datos de ejemplo, la ruta más corta Bogota → Cali es de **465 km**. Leticia está aislada, así que desde Bogota no hay camino hasta ella.
+## Limitaciones
 
----
+Cosas que sabemos que se podrían mejorar:
 
-## ⚠️ Limitaciones
-
-- Los nombres distinguen mayúsculas y minúsculas ("Bogota" ≠ "bogota") y no pueden contener `;`.
-- El ABB no se auto-balancea, así que en el peor caso degenera en una lista.
-- Dijkstra es O(V²) porque no usa montículo; es suficiente para redes pequeñas.
-- El historial (pila) y el árbol de búsquedas no se guardan en el archivo.
+- Los nombres distinguen mayúsculas de minúsculas ("Bogota" y "bogota" serían ciudades distintas) y no pueden llevar el signo `;`, porque es el separador del archivo.
+- El árbol no se equilibra solo. Si se insertan las ciudades ya ordenadas, queda como una lista.
+- Dijkstra funciona bien para pocas ciudades, pero con una red muy grande habría que usar un montículo.
+- El historial y el árbol de búsquedas no se guardan en el archivo.
 - No se puede deshacer eliminar una ciudad, ni encolar o atender solicitudes.
 
----
+## Integrantes
 
-## 👥 Integrantes
-
-| Nombre | Aporte principal |
+| Nombre | Qué hizo |
 |---|---|
-| _(nombre)_ | _(ej: Grafo, BFS/DFS/Dijkstra)_ |
-| _(nombre)_ | _(ej: Lista, Cola, Pila, ABB)_ |
-| _(nombre)_ | _(ej: Menús, persistencia, pruebas)_ |
+| Christian Perez | |
+| | |
+| | |
 
 Universidad Santo Tomás · Estructura de Datos · 2026-II
