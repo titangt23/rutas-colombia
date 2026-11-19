@@ -17,6 +17,14 @@ CIUDAD;Popayan
 CIUDAD;Barranquilla
 CIUDAD;Cartagena
 CIUDAD;Santa Marta
+CIUDAD;Pasto
+CIUDAD;Monteria
+CIUDAD;Sincelejo
+CIUDAD;Valledupar
+CIUDAD;Riohacha
+CIUDAD;Yopal
+CIUDAD;Quibdo
+CIUDAD;Florencia
 CONEXION;Bogota;Tunja;140
 CONEXION;Bogota;Villavicencio;120
 CONEXION;Bogota;Ibague;195
@@ -37,6 +45,18 @@ CONEXION;Popayan;Cali;140
 CONEXION;Medellin;Cartagena;640
 CONEXION;Cartagena;Barranquilla;120
 CONEXION;Barranquilla;Santa Marta;105
+CONEXION;Popayan;Pasto;250
+CONEXION;Cartagena;Sincelejo;190
+CONEXION;Sincelejo;Monteria;125
+CONEXION;Monteria;Medellin;410
+CONEXION;Santa Marta;Riohacha;170
+CONEXION;Riohacha;Valledupar;170
+CONEXION;Valledupar;Santa Marta;240
+CONEXION;Tunja;Yopal;200
+CONEXION;Yopal;Villavicencio;310
+CONEXION;Quibdo;Pereira;200
+CONEXION;Quibdo;Medellin;330
+CONEXION;Florencia;Neiva;300
 PASAJERO;1;Ana Perez;20
 PASAJERO;2;Luis Gomez;35
 PASAJERO;3;Sara Diaz;28

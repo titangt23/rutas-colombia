@@ -46,7 +46,7 @@ g++ -std=c++11 tests/pruebas.cpp -o bin/pruebas
 ./bin/pruebas
 ```
 
-Para no tener que escribir ciudades a mano, dentro del programa entren a la opción **9**, luego a **2**, y presionen Enter. Eso carga `data/sitrac_datos.txt`, que trae 17 ciudades de Colombia, 20 carreteras entre ellas (con distancias aproximadas), 8 pasajeros y 2 solicitudes.
+Al abrir el programa se cargan solos los datos de ejemplo de `data/sitrac_datos.txt`, que trae 25 ciudades de Colombia, 32 carreteras entre ellas (con distancias aproximadas), 8 pasajeros y 2 solicitudes. Si ese archivo no existe, el programa arranca vacío. Para volver a cargarlo, entren a la opción **9**, luego a **2**, y presionen Enter.
 
 Si usan Visual Studio Code, abran la carpeta del proyecto y presionen Ctrl+Shift+B para compilar y ejecutar. Si usan Dev-C++ o Code::Blocks y les sale un error con `nullptr` o `to_string`, hay que agregar `-std=c++11` en las opciones del compilador.
 

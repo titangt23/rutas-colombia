@@ -522,6 +522,16 @@ void menuArchivos() {
 //  MENU PRINCIPAL
 // ============================================================
 int main() {
+    // Al iniciar se cargan los datos de ejemplo, si el archivo existe.
+    // Si no existe, el programa arranca vacio.
+    int lineasMalas;
+    if (cargarDatos(archivoPorDefecto(), grafo, pasajeros, solicitudes, lineasMalas, false)) {
+        cout << "\n  Datos de ejemplo cargados: " << grafo.getNumCiudades() << " ciudades, "
+             << grafo.contarConexiones() << " conexiones, "
+             << pasajeros.getCantidad() << " pasajeros, "
+             << solicitudes.getCantidad() << " solicitudes.\n";
+    }
+
     int opcion;
     do {
         titulo("SITRAC - Sistema de Transporte y Rutas");
