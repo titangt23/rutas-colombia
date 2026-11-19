@@ -1,4 +1,5 @@
 # Datos de ejemplo de SITRAC (se cargan con la opcion 9 -> 2)
+# Las distancias en km son aproximadas.
 CIUDAD;Bogota
 CIUDAD;Tunja
 CIUDAD;Bucaramanga
@@ -10,6 +11,12 @@ CIUDAD;Manizales
 CIUDAD;Medellin
 CIUDAD;Cali
 CIUDAD;Leticia
+CIUDAD;Cucuta
+CIUDAD;Neiva
+CIUDAD;Popayan
+CIUDAD;Barranquilla
+CIUDAD;Cartagena
+CIUDAD;Santa Marta
 CONEXION;Bogota;Tunja;140
 CONEXION;Bogota;Villavicencio;120
 CONEXION;Bogota;Ibague;195
@@ -22,8 +29,21 @@ CONEXION;Pereira;Manizales;55
 CONEXION;Pereira;Cali;215
 CONEXION;Manizales;Medellin;200
 CONEXION;Bucaramanga;Medellin;390
+CONEXION;Bucaramanga;Cucuta;195
+CONEXION;Bogota;Neiva;310
+CONEXION;Ibague;Neiva;200
+CONEXION;Neiva;Popayan;330
+CONEXION;Popayan;Cali;140
+CONEXION;Medellin;Cartagena;640
+CONEXION;Cartagena;Barranquilla;120
+CONEXION;Barranquilla;Santa Marta;105
 PASAJERO;1;Ana Perez;20
 PASAJERO;2;Luis Gomez;35
 PASAJERO;3;Sara Diaz;28
+PASAJERO;4;Maria Lopez;42
+PASAJERO;5;Juan Torres;19
+PASAJERO;6;Laura Martinez;31
+PASAJERO;7;Andres Castro;56
+PASAJERO;8;Paula Ramirez;24
 SOLICITUD;1;Bogota;Cali
 SOLICITUD;2;Tunja;Medellin
