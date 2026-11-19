@@ -37,6 +37,10 @@ CONEXION;Popayan;Cali;140
 CONEXION;Medellin;Cartagena;640
 CONEXION;Cartagena;Barranquilla;120
 CONEXION;Barranquilla;Santa Marta;105
+CONEXION;Medellin;Pereira;230
+CONEXION;Barranquilla;Bucaramanga;570
+# Leticia no tiene carretera al resto del pais: esta conexion es la ruta aerea a Bogota
+CONEXION;Leticia;Bogota;1100
 PASAJERO;1;Ana Perez;20
 PASAJERO;2;Luis Gomez;35
 PASAJERO;3;Sara Diaz;28
