@@ -46,7 +46,7 @@ g++ -std=c++11 tests/pruebas.cpp -o bin/pruebas
 ./bin/pruebas
 ```
 
-Para no tener que escribir ciudades a mano, dentro del programa entren a la opción **9**, luego a **2**, y presionen Enter. Eso carga `data/sitrac_datos.txt`, que trae 17 ciudades de Colombia, 23 carreteras entre ellas (con distancias aproximadas), 8 pasajeros y 2 solicitudes.
+Para no tener que escribir ciudades a mano, dentro del programa entren a la opción **9**, luego a **2**, y presionen Enter. Eso carga `data/sitrac_datos.txt`, que trae 17 ciudades de Colombia, 20 carreteras entre ellas (con distancias aproximadas), 8 pasajeros y 2 solicitudes.
 
 Si usan Visual Studio Code, abran la carpeta del proyecto y presionen Ctrl+Shift+B para compilar y ejecutar. Si usan Dev-C++ o Code::Blocks y les sale un error con `nullptr` o `to_string`, hay que agregar `-std=c++11` en las opciones del compilador.
 
@@ -69,7 +69,7 @@ Bogota[0] -> Tunja[1] -> Villavicencio[1] -> Ibague[1] -> Manizales[1] ->
 Bucaramanga[2] -> Armenia[2] -> Pereira[2] -> Medellin[2] -> Cali[3]
 ```
 
-En los datos todas las ciudades tienen camino entre sí. Leticia no tiene carretera al resto del país, así que su conexión con Bogota representa la ruta aérea. Para probar qué pasa cuando no existe un camino, agreguen una ciudad nueva desde el menú 1 y no la conecten a nada.
+Leticia está en los datos sin ninguna carretera a propósito, para poder probar qué pasa cuando no existe un camino.
 
 ## Qué hay en cada archivo
 
