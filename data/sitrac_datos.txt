@@ -25,6 +25,7 @@ CIUDAD;Riohacha
 CIUDAD;Yopal
 CIUDAD;Quibdo
 CIUDAD;Florencia
+CIUDAD;Paipa
 CONEXION;Bogota;Tunja;140
 CONEXION;Bogota;Villavicencio;120
 CONEXION;Bogota;Ibague;195
@@ -57,6 +58,8 @@ CONEXION;Yopal;Villavicencio;310
 CONEXION;Quibdo;Pereira;200
 CONEXION;Quibdo;Medellin;330
 CONEXION;Florencia;Neiva;300
+CONEXION;Paipa;Tunja;40
+CONEXION;Paipa;Yopal;190
 PASAJERO;1;Ana Perez;20
 PASAJERO;2;Luis Gomez;35
 PASAJERO;3;Sara Diaz;28
