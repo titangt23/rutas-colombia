@@ -1,8 +1,10 @@
 // ============================================================
 //  pruebas.cpp  -  Pruebas automaticas de SITRAC
 //
-//  Compilar:  g++ pruebas.cpp -o pruebas
-//  Ejecutar:  ./pruebas     (en Windows: pruebas.exe)
+//  Compilar (desde la carpeta del proyecto):
+//      g++ -std=c++11 tests/pruebas.cpp -o bin/pruebas
+//  Ejecutar:
+//      bin/pruebas     (en Windows: bin\pruebas.exe)
 //
 //  Cada prueba muestra [OK] o [FALLA]. Al final se muestra el total.
 // ============================================================
@@ -10,14 +12,14 @@
 #include <fstream>
 #include <string>
 #include <cstdio>
-#include "Utilidades.h"
-#include "ListaPasajeros.h"
-#include "Cola.h"
-#include "Pila.h"
-#include "ABB.h"
-#include "Grafo.h"
-#include "Tipos.h"
-#include "Persistencia.h"
+#include "../src/Utilidades.h"
+#include "../src/ListaPasajeros.h"
+#include "../src/Cola.h"
+#include "../src/Pila.h"
+#include "../src/ABB.h"
+#include "../src/Grafo.h"
+#include "../src/Tipos.h"
+#include "../src/Persistencia.h"
 using namespace std;
 
 int pasadas = 0;

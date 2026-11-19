@@ -29,21 +29,24 @@ Cada submenú tiene su opción "0. Volver".
 
 Solo se necesita un compilador de C++ como `g++` (en Windows sirve MinGW o WinLibs), con C++11 o más reciente.
 
+Desde la carpeta del proyecto (la que tiene `src`, `tests` y `data`):
+
 ```bash
-g++ -std=c++11 main.cpp -o sitrac
-./sitrac
+mkdir bin
+g++ -std=c++11 src/main.cpp -o bin/sitrac
+./bin/sitrac
 ```
 
-En Windows el ejecutable se llama `sitrac.exe`.
+En Windows el ejecutable se llama `bin\sitrac.exe`.
 
 Las pruebas automáticas se compilan igual:
 
 ```bash
-g++ -std=c++11 pruebas.cpp -o pruebas
-./pruebas
+g++ -std=c++11 tests/pruebas.cpp -o bin/pruebas
+./bin/pruebas
 ```
 
-Para no tener que escribir ciudades a mano, dentro del programa entren a la opción **9**, luego a **2**, y presionen Enter. Eso carga `sitrac_datos.txt`, que trae 11 ciudades de Colombia y 12 carreteras entre ellas.
+Para no tener que escribir ciudades a mano, dentro del programa entren a la opción **9**, luego a **2**, y presionen Enter. Eso carga `data/sitrac_datos.txt`, que trae 11 ciudades de Colombia y 12 carreteras entre ellas.
 
 Si usan Visual Studio Code, abran la carpeta del proyecto y presionen Ctrl+Shift+B para compilar y ejecutar. Si usan Dev-C++ o Code::Blocks y les sale un error con `nullptr` o `to_string`, hay que agregar `-std=c++11` en las opciones del compilador.
 
@@ -72,6 +75,17 @@ Leticia está en los datos sin ninguna carretera a propósito, para poder probar
 
 Separamos el código por estructura para que cada archivo se pueda leer y explicar por separado.
 
+```
+SITRAC/
+├── src/        el programa
+├── tests/      las pruebas automáticas
+├── data/       los datos de ejemplo
+├── bin/        los ejecutables (se crea al compilar y no se sube a Git)
+└── README.md
+```
+
+**Carpeta `src`**
+
 | Archivo | Qué contiene |
 |---|---|
 | `main.cpp` | El menú principal y los submenús. Solo llama a las demás estructuras. |
@@ -83,9 +97,13 @@ Separamos el código por estructura para que cada archivo se pueda leer y explic
 | `Grafo.h` | El grafo con BFS, DFS y Dijkstra. |
 | `Tipos.h` | Los dos `struct` que se guardan en la cola y en la pila: `Solicitud` y `Accion`. |
 | `Persistencia.h` | Guardar y cargar el archivo de datos. |
-| `pruebas.cpp` | Las 25 pruebas automáticas. |
-| `sitrac_datos.txt` | Los datos de ejemplo. |
-| `GUIA_PARA_EXPLICAR.md` | Nuestras notas para la sustentación. |
+
+**Otras carpetas**
+
+| Archivo | Qué contiene |
+|---|---|
+| `tests/pruebas.cpp` | Las 25 pruebas automáticas. |
+| `data/sitrac_datos.txt` | Los datos de ejemplo. |
 
 ## Cómo está hecho
 

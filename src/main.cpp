@@ -2,13 +2,14 @@
 //  SITRAC - Sistema Inteligente de Transporte y Gestion de Rutas
 //  Proyecto final - Estructura de Datos - C++
 //
-//  Compilar:   g++ main.cpp -o sitrac
-//  Ejecutar:   ./sitrac      (en Windows: sitrac.exe)
-//
-//  Este archivo solo tiene los MENUS. Cada estructura de datos
-//  esta en su propio archivo .h (modularidad).
+//  Compilar (desde la carpeta del proyecto):
+//      g++ -std=c++11 src/main.cpp -o bin/sitrac
+//  Ejecutar:
+//      bin/sitrac      (en Windows: bin\sitrac.exe)
 // ============================================================
+
 #include <iostream>
+#include <fstream>
 #include <string>
 #include "Utilidades.h"
 #include "ListaPasajeros.h"
@@ -27,7 +28,16 @@ Cola<Solicitud> solicitudes;    // cola de solicitudes de viaje
 Pila<Accion> historial;         // pila de acciones (para deshacer)
 ABB busquedas;                  // arbol de ciudades buscadas
 
-const string ARCHIVO_POR_DEFECTO = "sitrac_datos.txt";
+// Archivo de datos de ejemplo. Se prueba desde la carpeta del proyecto
+// y tambien desde bin/, para que funcione al abrir el .exe directamente.
+string archivoPorDefecto() {
+    const string candidatos[] = { "data/sitrac_datos.txt", "../data/sitrac_datos.txt" };
+    for (int i = 0; i < 2; i++) {
+        ifstream prueba(candidatos[i].c_str());
+        if (prueba) return candidatos[i];
+    }
+    return candidatos[0];
+}
 
 // Guarda una accion en la pila de historial
 void registrarAccion(string tipo, string texto1, string texto2,
@@ -467,9 +477,10 @@ void reportes() {
 //  9. GUARDAR / CARGAR
 // ============================================================
 string pedirNombreArchivo() {
-    cout << "Nombre del archivo (Enter = " << ARCHIVO_POR_DEFECTO << "): ";
+    string porDefecto = archivoPorDefecto();
+    cout << "Nombre del archivo (Enter = " << porDefecto << "): ";
     string nombre = recortar(leerLinea());
-    if (nombre == "") nombre = ARCHIVO_POR_DEFECTO;
+    if (nombre == "") nombre = porDefecto;
     return nombre;
 }
 

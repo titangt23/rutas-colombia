@@ -1,10 +1,9 @@
-# Ejecutables y archivos compilados (se generan al compilar)
+# Programas compilados (se generan al compilar)
+bin/
 *.exe
 *.o
 *.obj
 *.out
-sitrac
-pruebas
 
 # Archivos temporales de las pruebas
 prueba_tmp.txt
