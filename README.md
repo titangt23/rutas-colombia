@@ -46,7 +46,7 @@ g++ -std=c++11 tests/pruebas.cpp -o bin/pruebas
 ./bin/pruebas
 ```
 
-Al abrir el programa se cargan solos los datos de ejemplo de `data/sitrac_datos.txt`, que trae 26 ciudades de Colombia, 34 carreteras entre ellas (con distancias aproximadas), 8 pasajeros y 2 solicitudes. Si ese archivo no existe, el programa arranca vacío. Para volver a cargarlo, entren a la opción **9**, luego a **2**, y presionen Enter.
+Al abrir el programa se cargan solos los datos de ejemplo de `data/sitrac_datos.txt`, que trae 26 ciudades de Colombia, 34 carreteras entre ellas (con distancias aproximadas), 8 pasajeros y 2 solicitudes. El archivo se busca junto al ejecutable, así que funciona sin importar desde qué carpeta se abra. Si no lo encuentra, el programa avisa y arranca vacío. Para volver a cargarlo, entren a la opción **9**, luego a **2**, y presionen Enter.
 
 Si usan Visual Studio Code, abran la carpeta del proyecto y presionen Ctrl+Shift+B para compilar y ejecutar. Si usan Dev-C++ o Code::Blocks y les sale un error con `nullptr` o `to_string`, hay que agregar `-std=c++11` en las opciones del compilador.
 

@@ -28,11 +28,21 @@ Cola<Solicitud> solicitudes;    // cola de solicitudes de viaje
 Pila<Accion> historial;         // pila de acciones (para deshacer)
 ABB busquedas;                  // arbol de ciudades buscadas
 
-// Archivo de datos de ejemplo. Se prueba desde la carpeta del proyecto
-// y tambien desde bin/, para que funcione al abrir el .exe directamente.
+// Carpeta donde esta el .exe (se llena en main con argv[0]).
+string carpetaDelExe = "";
+
+// Archivo de datos de ejemplo. Se busca en varios sitios para que funcione
+// sin importar desde que carpeta se abra el programa:
+//   1. data/ desde la carpeta actual (cuando se abre desde SITRAC)
+//   2. ../data/ desde la carpeta actual (cuando se abre desde bin)
+//   3. ../data/ respecto a donde esta el .exe (funciona desde cualquier carpeta)
 string archivoPorDefecto() {
-    const string candidatos[] = { "data/sitrac_datos.txt", "../data/sitrac_datos.txt" };
-    for (int i = 0; i < 2; i++) {
+    string candidatos[3];
+    candidatos[0] = "data/sitrac_datos.txt";
+    candidatos[1] = "../data/sitrac_datos.txt";
+    candidatos[2] = carpetaDelExe + "/../data/sitrac_datos.txt";
+    int cuantos = (carpetaDelExe == "") ? 2 : 3;
+    for (int i = 0; i < cuantos; i++) {
         ifstream prueba(candidatos[i].c_str());
         if (prueba) return candidatos[i];
     }
@@ -521,15 +531,25 @@ void menuArchivos() {
 // ============================================================
 //  MENU PRINCIPAL
 // ============================================================
-int main() {
+int main(int argc, char* argv[]) {
+    // Guardar la carpeta del .exe para poder encontrar el archivo de datos
+    if (argc > 0) {
+        string ruta = argv[0];
+        size_t pos = ruta.find_last_of("/\\");
+        if (pos != string::npos) carpetaDelExe = ruta.substr(0, pos);
+    }
+
     // Al iniciar se cargan los datos de ejemplo, si el archivo existe.
-    // Si no existe, el programa arranca vacio.
+    // Si no existe, el programa arranca vacio y lo avisa.
     int lineasMalas;
     if (cargarDatos(archivoPorDefecto(), grafo, pasajeros, solicitudes, lineasMalas, false)) {
         cout << "\n  Datos de ejemplo cargados: " << grafo.getNumCiudades() << " ciudades, "
              << grafo.contarConexiones() << " conexiones, "
              << pasajeros.getCantidad() << " pasajeros, "
              << solicitudes.getCantidad() << " solicitudes.\n";
+    } else {
+        cout << "\n  No se encontro data/sitrac_datos.txt. El programa inicia vacio.\n"
+             << "  Puede cargar un archivo desde el menu 9, opcion 2.\n";
     }
 
     int opcion;
